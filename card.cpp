@@ -8,16 +8,30 @@
 #include "card.h"
 using namespace std;
 
+Card::Card(){}
 
-string toString() {}
-bool Card::sameSuitAs(const Card& c) {}
-int  Card::getRank() {}
-string Card::suitString(Suit s)  {}
-
-string Card::rankString(int r) {}
-
-bool Card::operator == (const Card& rhs) {}
-bool Card::operator != (const Card& rhs) {}
+Card::Card(int rank, Card::Suit s) {}
 
 
-ostream& Card::operator << (ostream& out, const Card& c) {}
+string Card::toString() const {}
+
+
+bool Card::sameSuitAs(const Card &c) const {}
+
+
+int  Card::getRank() const {}
+
+
+string Card::suitString(Suit s) const {}
+
+
+string Card::rankString(int r) const {}
+
+
+bool Card::operator == (const Card& rhs) const {}
+
+
+bool Card::operator != (const Card& rhs) const {}
+
+
+//ostream& Card::operator << (ostream& out, const Card& c) {}
