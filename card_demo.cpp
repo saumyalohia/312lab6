@@ -23,6 +23,9 @@ int main( )
     cout << a.toString() << endl;
     cout << b.toString() << endl;
 
+    bool result = a.sameSuitAs(b);
+    cout << result;
+
 //    int numCards = 5;
 //
 //    Player p1("Joe");
