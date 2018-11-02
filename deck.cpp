@@ -14,10 +14,13 @@
 // Calling shuffle again replenishes the deck with 52 cards.
 
 #include "deck.h"
+#include <cstdlib>
+#include <iostream>
 
-    Deck() {}           // pristine, sorted deck
+using namespace std;
 
-    void shuffle() {}   // shuffle the deck, all 52 cards present
-    Card dealCard() {}   // get a card, after 52 are dealt, fail
+Deck::Deck() {}           // pristine, sorted deck
 
-    int  size() const {} // # cards left in the deck
+void Deck::shuffle() {}   // shuffle the deck, all 52 cards present
+//Card Deck::dealCard() {}   // get a card, after 52 are dealt, fail
+
