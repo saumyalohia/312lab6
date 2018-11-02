@@ -2,6 +2,7 @@
 // This is a small demonstration program showing how the Card and Deck classes are used.
 #include <iostream>    // Provides cout and cin
 #include <cstdlib>     // Provides EXIT_SUCCESS
+#include <vector>
 #include "card.h"
 #include "player.h"
 #include "deck.h"
@@ -17,6 +18,7 @@ void dealHand(Deck &d, Player &p, int numCards);
 
 int main( )
 {
+    //FOR DEBUGGING CARD
     Card a;
     Card::Suit s = Card::clubs;
     Card b(11, s);
@@ -24,14 +26,15 @@ int main( )
     cout << b.toString() << endl;
 
     bool result = a.sameSuitAs(b);
-    cout << result;
+    cout << result << endl;
 
-//    int numCards = 5;
-//
-//    Player p1("Joe");
-//    Player p2("Jane");
-//
-//    Deck d;  //create a deck of cards
+    int numCards = 5;
+
+    Player p1("Joe");
+    Player p2("Jane");
+
+    Deck d;  //create a deck of cards
+    //cout << d.size() << endl;
 //    d.shuffle();
 //
 //    dealHand(d, p1, numCards);

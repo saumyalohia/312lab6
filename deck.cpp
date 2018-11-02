@@ -16,11 +16,28 @@
 #include "deck.h"
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-Deck::Deck() {}           // pristine, sorted deck
+Deck::Deck() {
+    unsigned int n = 52;
+    vector<Card> deck(n);
 
-void Deck::shuffle() {}   // shuffle the deck, all 52 cards present
-//Card Deck::dealCard() {}   // get a card, after 52 are dealt, fail
+    for (int i = 0; i < n; i++) {
+        for (int suit = 0; suit < 4; suit++) {
+            for (int rank = 1; rank < 14; rank++) {
+                deck[i] = Card(rank, Card::Suit(suit));
+            }
+        }
+    }
+}
 
+//void Deck::shuffle() {}   // shuffle the deck, all 52 cards present
+//Card Deck::dealCard() {
+//    return Card
+//}   // get a card, after 52 are dealt, fail
+
+//int Deck::size() const {
+//
+//}
