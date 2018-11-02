@@ -11,15 +11,26 @@
 #include <stdlib.h>
 using namespace std;
 
-Card::Card(){}
+Card::Card() {
+    myRank = 1;
+    mySuit = spades;
+}
 
-Card::Card(int rank, Card::Suit s) {}
+Card::Card(int rank, Card::Suit s) {
+    myRank = rank;
+    mySuit = s;
+}
 
 
-string Card::toString() const {}
+string Card::toString() const {
+    string blah = "a";
+    return blah;
+}
 
 
-bool Card::sameSuitAs(const Card &c) const {}
+bool Card::sameSuitAs(const Card &c) const {
+    return true;
+}
 
 
 int  Card::getRank() const {
@@ -27,7 +38,24 @@ int  Card::getRank() const {
 }
 
 
-string Card::suitString(Suit s) const {}
+string Card::suitString(Suit s) const {
+    string suit;
+    switch (s) {
+        case spades:
+            suit = 's';
+            break;
+        case clubs:
+            suit = 'c';
+            break;
+        case diamonds:
+            suit = 'd';
+            break;
+        case hearts:
+            suit = 'h';
+            break;
+    }
+    return suit;
+}
 
 
 string Card::rankString(int r) const {
@@ -52,10 +80,14 @@ string Card::rankString(int r) const {
 }
 
 
-bool Card::operator == (const Card& rhs) const {}
+bool Card::operator == (const Card& rhs) const {
+    return true;
+}
 
 
-bool Card::operator != (const Card& rhs) const {}
+bool Card::operator != (const Card& rhs) const {
+    return true;
+}
 
 
 //ostream& Card::operator << (ostream& out, const Card& c) {}
