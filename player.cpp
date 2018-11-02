@@ -21,12 +21,12 @@ using namespace std;
 void Player::addCard(Card c) {}  //adds a card to the hand
 void Player::bookCards(Card c1, Card c2) {}
 
-    //OPTIONAL
-    // comment out if you decide to not use it
-    //this function will check a players hand for a pair.
-    //If a pair is found, it returns true and populates the two variables with the cards tha make the pair.
+//OPTIONAL
+// comment out if you decide to not use it
+//this function will check a players hand for a pair.
+//If a pair is found, it returns true and populates the two variables with the cards tha make the pair.
 
-    bool Player::checkHandForBook(Card &c1, Card &c2) {}
+bool Player::checkHandForBook(Card &c1, Card &c2) {}
 
     //OPTIONAL
     // comment out if you decide to not use it
