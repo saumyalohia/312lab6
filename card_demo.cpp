@@ -20,8 +20,8 @@ int main( )
     Card a;
     Card::Suit s = Card::clubs;
     Card b(11, s);
-    cout << a.getRank() << " " << a.suitString(s) << endl;
-    cout << b.getRank() << " " << b.suitString(s) << endl;
+    cout << a.toString() << endl;
+    cout << b.toString() << endl;
 
 //    int numCards = 5;
 //

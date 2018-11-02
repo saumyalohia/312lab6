@@ -23,8 +23,10 @@ Card::Card(int rank, Card::Suit s) {
 
 
 string Card::toString() const {
-    string blah = "a";
-    return blah;
+    string r; string s;
+    r = rankString(myRank);
+    s = suitString(mySuit);
+    return r+s;
 }
 
 
