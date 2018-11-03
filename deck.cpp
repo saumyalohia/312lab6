@@ -20,24 +20,52 @@
 
 using namespace std;
 
-Deck::Deck() {
-    unsigned int n = 52;
-    vector<Card> deck(n);
+Deck::Deck()
+{
+    vector<Card> deck(SIZE);
+//    for (int i = 0; i < SIZE; i++) {
+//        for (int suit = 0; suit < 4; suit++) {
+//            for (int rank = 1; rank < 14; rank++) {
+//                deck[i] = Card(rank, Card::Suit(suit));
+//                cout << deck[i];
+//            }
+//        }
+//    }
 
-    for (int i = 0; i < n; i++) {
-        for (int suit = 0; suit < 4; suit++) {
-            for (int rank = 1; rank < 14; rank++) {
-                deck[i] = Card(rank, Card::Suit(suit));
-            }
+    // ^prints out 52 decks worth of cards XD
+
+    for (int suit = 0; suit < 4; suit++) {
+        for (int rank = 1; rank < 14; rank++) {
+            deck[suit+rank] = Card(rank, Card::Suit(suit));
+            //cout << deck[suit+rank];
         }
     }
+
+    myIndex = 0;
 }
 
-//void Deck::shuffle() {}   // shuffle the deck, all 52 cards present
-//Card Deck::dealCard() {
-//    return Card
+
+void Deck::shuffle() {
+
+}
+
+
+//Card Deck::dealCard()
+//{
+//    Card card;
+//    return card;
 //}   // get a card, after 52 are dealt, fail
 
-//int Deck::size() const {
-//
-//}
+
+int Deck::size() const
+{
+    int count = 0;
+    int i = myIndex;
+    while(i<SIZE)
+    {
+        if(this->myCards[i].getRank() != 0){ count++; }
+        i++;
+    }
+
+    return count;
+}

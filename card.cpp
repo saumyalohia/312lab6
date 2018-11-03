@@ -31,12 +31,7 @@ string Card::toString() const {
 
 
 bool Card::sameSuitAs(const Card &c) const {
-    if (this->mySuit == c.mySuit) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return (mySuit == c.mySuit);
 }
 
 
@@ -88,28 +83,18 @@ string Card::rankString(int r) const {
 
 
 bool Card::operator == (const Card& rhs) const {
-    if (myRank == rhs.myRank) {
-        if (mySuit == rhs.mySuit) {
-            return true;
-        }
-    }
-    else {
-        return false;
-    }
+    return ((myRank == rhs.myRank) && (mySuit == rhs.mySuit));
 }
 
 
 bool Card::operator != (const Card& rhs) const {
-    if (myRank != rhs.myRank) {
-        return true;
-    }
-    else {
-        if (mySuit != rhs.mySuit) {
-            return true;
-        }
-        return false;
-    }
+    return !((myRank == rhs.myRank) && (mySuit == rhs.mySuit));
 }
 
 
-//ostream& Card::operator << (ostream& out, const Card& c) {}
+//ostream& Card::operator << (ostream& out, const Card& c)
+ostream& operator << (ostream& out, const Card& c)
+{
+    out << c.toString() << endl;
+    return out;
+}
