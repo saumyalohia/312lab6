@@ -16,28 +16,16 @@
 #include "deck.h"
 #include <cstdlib>
 #include <iostream>
-#include <vector>
+#include <ctime>
 
 using namespace std;
 
 Deck::Deck()
 {
-    vector<Card> deck(SIZE);
-//    for (int i = 0; i < SIZE; i++) {
-//        for (int suit = 0; suit < 4; suit++) {
-//            for (int rank = 1; rank < 14; rank++) {
-//                deck[i] = Card(rank, Card::Suit(suit));
-//                cout << deck[i];
-//            }
-//        }
-//    }
-
-    // ^prints out 52 decks worth of cards XD
-
     for (int suit = 0; suit < 4; suit++) {
-        for (int rank = 1; rank < 14; rank++) {
-            deck[suit+rank] = Card(rank, Card::Suit(suit));
-            //cout << deck[suit+rank];
+        for (int rank = 0; rank < 13; rank++) {
+            myCards[suit*13+rank] = Card(rank+1, Card::Suit(suit));
+            cout << myCards[suit*13+rank];
         }
     }
 
@@ -45,27 +33,48 @@ Deck::Deck()
 }
 
 
-void Deck::shuffle() {
+void Deck::swapCards(int a, int b)
+{
+    // Swap cards at indecies a and b
+    Card temp = this->myCards[a];
+    this->myCards[a] = this->myCards[b];
+    this->myCards[b] = temp;
+}
 
+void Deck::shuffle()
+{
+    //unsigned int currentTime = (unsigned)time(0);
+    unsigned int currentTime = 8;
+    srand(currentTime);
+
+    for(int i = 0; i < 2*size(); i++)
+    {
+        long cardInd1 = (rand() % size());
+        long cardInd2 = (rand() % size());
+        swapCards(cardInd1, cardInd2);
+    }
 }
 
 
-//Card Deck::dealCard()
-//{
-//    Card card;
-//    return card;
-//}   // get a card, after 52 are dealt, fail
+// get a card, after 52 are dealt, fail
+Card Deck::dealCard()
+{
+    Card card;
+    if(myIndex != SIZE)
+    {
+        card = this->myCards[myIndex];
+        myIndex++;
+    }
+    else
+    {
+    cout << "No more cards!" << endl;
+    }
+
+    return card;
+}
 
 
 int Deck::size() const
 {
-    int count = 0;
-    int i = myIndex;
-    while(i<SIZE)
-    {
-        if(this->myCards[i].getRank() != 0){ count++; }
-        i++;
-    }
-
-    return count;
+    return SIZE - myIndex;
 }

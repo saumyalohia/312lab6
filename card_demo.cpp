@@ -19,33 +19,9 @@ void dealHand(Deck &d, Player &p, int numCards);
 int main( )
 {
     //FOR DEBUGGING CARD
-    //Card a;
-    Card::Suit c = Card::clubs;
-    Card::Suit s = Card::spades;
-    Card a(11, s);
-    Card b(1, s);
-    Card e(11, c);
-    cout << a.toString() << endl;
-    cout << b.toString() << endl;
-    cout << e.toString() << endl;
-
-    bool result = a.sameSuitAs(e);
-    cout << result << endl;
-
-
-    bool blah = (a == e);
-    cout << blah << endl;
-
-    cout << a << endl;
 
     //FOR DEBUGGING DECK
     Deck d;  //create a deck of cards
-
-    cout << d.size() << endl;
-
-    //cout << d.dealCard() << endl;
-    //cout << d.dealCard() << endl;
-
 
     //DEBUGGING FOR PLAYERS
 

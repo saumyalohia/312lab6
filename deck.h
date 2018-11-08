@@ -25,9 +25,9 @@ class Deck
 
 public:
 
-
     Deck();           // pristine, sorted deck
 
+    void swapCards(int a, int b);
     void shuffle();   // shuffle the deck, all 52 cards present
     Card dealCard();   // get a card, after 52 are dealt, fail
 
