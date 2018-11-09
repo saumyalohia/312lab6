@@ -43,14 +43,14 @@ void Deck::swapCards(int a, int b)
 
 void Deck::shuffle()
 {
-    //unsigned int currentTime = (unsigned)time(0);
-    unsigned int currentTime = 8;
+    unsigned int currentTime = (unsigned)time(0);
+    //unsigned int currentTime = 8;
     srand(currentTime);
 
     for(int i = 0; i < 2*size(); i++)
     {
-        long cardInd1 = (rand() % size());
-        long cardInd2 = (rand() % size());
+        int cardInd1 = (rand() % size());
+        int cardInd2 = (rand() % size());
         swapCards(cardInd1, cardInd2);
     }
 }

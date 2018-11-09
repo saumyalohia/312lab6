@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <ctime>
 #include "card.h"
 #include "player.h"
 
@@ -61,8 +62,8 @@ void Player::bookCards(Card c1, Card c2)
 //hand so they can say "Do you have a 4?"
 Card Player::chooseCardFromHand() const
 {
-    //unsigned int currentTime = (unsigned)time(0);
-    unsigned int currentTime = 8;
+    unsigned int currentTime = (unsigned)time(0);
+    //unsigned int currentTime = 8;
     srand(currentTime);
 
     int card = (rand() % myHand.size());
@@ -91,15 +92,19 @@ bool Player::cardInHand(Card c) const
 Card Player::removeCardFromHand(Card c)
 {
     vector<Card>::iterator iter;
+
+    Card temp;
+
     for(iter = myHand.begin(); iter != myHand.end(); iter++)
     {
-        if(*iter == c)
+        if((*iter).getRank() == c.getRank())
         {
+            temp = *iter;
             myHand.erase(iter);
-            return c;
+            return temp;
         }
     }
-
+    return c;
 }
 
 
