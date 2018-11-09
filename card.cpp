@@ -62,6 +62,7 @@ string Card::suitString(Suit s) const {
 
 string Card::rankString(int r) const {
     std::string rank;
+    std::stringstream ss;
     switch (r) {
         case 1:
             rank = 'A';
@@ -76,7 +77,8 @@ string Card::rankString(int r) const {
             rank = 'K';
             break;
         default:
-            rank = std::to_string(r);
+            ss << r;
+            rank = ss.str();
     }
     return rank;
 }
