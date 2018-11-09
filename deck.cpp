@@ -44,7 +44,8 @@ void Deck::swapCards(int a, int b)
 void Deck::shuffle()
 {
     unsigned int currentTime = (unsigned)time(0);
-    //unsigned int currentTime = 8;
+    //cout << "current Time" << currentTime << endl;
+    //unsigned int currentTime = 1;
     srand(currentTime);
 
     for(int i = 0; i < 2*size(); i++)

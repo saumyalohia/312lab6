@@ -6,6 +6,7 @@
 #include "card.h"
 #include "player.h"
 #include "deck.h"
+#include <fstream>
 
 using namespace std;
 
@@ -18,7 +19,9 @@ void dealHand(Deck &d, Player &p, int numCards);
 
 int main( )
 {
-    //FOR DEBUGGING DECK
+    ofstream myfile;
+    myfile.open ("gofish_results.txt");
+
     Deck d;  //create a deck of cards
     d.shuffle();
     //DEBUGGING FOR PLAYERS
@@ -37,14 +40,10 @@ int main( )
 
     while (p1.checkHandForPair(c1, c2)) {
         p1.bookCards(c1, c2);
-        p1.removeCardFromHand(c1);
-        p1.removeCardFromHand(c2);
     }
 
     while (p2.checkHandForPair(c1, c2)) {
         p2.bookCards(c1, c2);
-        p2.removeCardFromHand(c1);
-        p2.removeCardFromHand(c2);
     }
 
     cout << p1.getName() <<" has : " << p1.showHand() << endl;
@@ -52,7 +51,7 @@ int main( )
 
     cout << "--------START GAME---------" << endl;
 
-    while (((p1.getBookSize() <= 13) && (p2.getBookSize() <= 13)) || ((p1.getBookSize()+p2.getBookSize()) == 26)) {
+    while (((p1.getBookSize() <= 13) && (p2.getBookSize() <= 13)) && !((p1.getBookSize()+p2.getBookSize()) == 26)) {
     //check if p1 has cards in their hand
     //skip directly to draw card if not
     //****************JOE'S TURN
@@ -98,7 +97,10 @@ int main( )
             //if false, print go fish
             cout << p2.getName() << " says: Go Fish" << endl;
             if (d.size() > 0) {
-                p1.addCard(d.dealCard());
+                Card picked;
+                picked = d.dealCard();
+                p1.addCard(picked);
+                cout << p1.getName() << " picked up " << picked.toString() << endl;
                 if (p1.checkHandForPair(c1, c2)) {
                     p1.bookCards(c1, c2);
                 }
@@ -110,7 +112,6 @@ int main( )
             cout << p1.getName() <<"'s book size is: " << p1.getBookSize() << endl;
             cout << p2.getName() <<"'s book size is: " << p2.getBookSize() << endl << endl;
         }
-
 
         //**************JANE'S TURN
 
@@ -149,7 +150,10 @@ int main( )
             //if false, print go fish
             cout << p1.getName() << " says: Go Fish" << endl;
             if (d.size() > 0) {
-                p2.addCard(d.dealCard());
+                Card picked;
+                picked = d.dealCard();
+                p2.addCard(picked);
+                cout << p2.getName() << " picked up " << picked.toString() << endl;
                 if (p2.checkHandForPair(c1, c2)) {
                     p2.bookCards(c1, c2);
                 }
@@ -161,13 +165,19 @@ int main( )
             cout << p1.getName() <<"'s book size is: " << p1.getBookSize() << endl;
             cout << p2.getName() <<"'s book size is: " << p2.getBookSize() << endl << endl;
         }
-
     }
 
-    cout << "--------------END GAME-------------" << endl;
+
+    if(p1.getBookSize() == p2.getBookSize()) {
+        cout << p1.getName() << " and " << p2.getName() << " are tied!" << endl;
+    } else if (p1.getBookSize() > p2.getBookSize()) {
+        cout << p1.getName() << " CRUSHED " << p2.getName() << "!" << endl;
+    } else {
+        cout << p2.getName() << " CRUSHED " << p1.getName() << "!" << endl;
+    }
 
 
-
+    cout << "GAME OVER." << endl;
     return EXIT_SUCCESS;
 }
 

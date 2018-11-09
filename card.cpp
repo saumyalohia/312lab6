@@ -61,7 +61,7 @@ string Card::suitString(Suit s) const {
 
 
 string Card::rankString(int r) const {
-    string rank;
+    std::string rank;
     switch (r) {
         case 1:
             rank = 'A';
