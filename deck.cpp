@@ -25,7 +25,7 @@ Deck::Deck()
     for (int suit = 0; suit < 4; suit++) {
         for (int rank = 0; rank < 13; rank++) {
             myCards[suit*13+rank] = Card(rank+1, Card::Suit(suit));
-            cout << myCards[suit*13+rank];
+            //cout << myCards[suit*13+rank];
         }
     }
 
@@ -62,12 +62,12 @@ Card Deck::dealCard()
     Card card;
     if(myIndex != SIZE)
     {
-        card = this->myCards[myIndex];
+        card = myCards[myIndex];
         myIndex++;
     }
     else
     {
-    cout << "No more cards!" << endl;
+        cout << "No more cards!" << endl;
     }
 
     return card;
