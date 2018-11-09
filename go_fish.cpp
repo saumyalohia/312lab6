@@ -51,23 +51,46 @@ int main( )
     cout << p2.getName() <<" has : " << p2.showHand() << endl;
 
     //while ((p1.getBookSize() < 14) || (p2.getBookSize() <14)) {
+    //check if p1 has cards in their hand
+    //skip directly to draw card if not
+        Card card1 = p1.chooseCardFromHand();
         if (p1.getHandSize() > 0) {
-            cout << p1.getName() << "asks: Do you have a " << p1.chooseCardFromHand() << "?" << endl;
-
+            //p1 chooses a card from their hand
+            //p1 asks p2 if they have that card
+            cout << p1.getName() << "asks: Do you have a " << card1.rankString(card1.getRank()) << "?" << endl;
+        } else {
+            p1.addCard(d.dealCard());
+            cout << p1.getName() <<" has : " << p1.showHand() << endl;
         }
-        //check if p1 has cards in their hand
-            //skip directly to draw card if not
-        //p1 chooses a card from their hand
-        //p1 asks p2 if they have that card
 
         //p2 checks their hand for that card
-        //if true, then remove card from p2's hand
-        //add to p1's hand
-        //check for books
-        //if false, print go fish
-            //check deck size
-            //p1 picks up a card from the deck
+        if (p2.sameRankInHand(card1)) {
+            //if true, then remove card from p2's hand
+            p2.removeCardFromHand(card1);
+            //add to p1's hand
+            p1.addCard(card1);
             //check for books
+            if (p1.checkHandForPair(c1, c2)) {
+                //check deck size
+                if (d.size() > 0) {
+                    //p1 picks up a card from the deck
+                    p1.addCard(d.dealCard());
+                    //check for books
+                    if (p1.checkHandForPair(c1, c2)) {
+                        p1.bookCards(c1, c2);
+                    }
+                }
+            }
+            cout << p1.getName() <<" has : " << p1.showHand() << endl;
+            cout << p2.getName() <<" has : " << p2.showHand() << endl;
+            cout << p1.getName() <<" has books: " << p1.showBooks() << endl;
+            cout << p2.getName() <<" has books: " << p2.showBooks() << endl;
+        } else {
+                //if false, print go fish
+            cout << p2.getName() << " says: Go Fish" << endl;
+        }
+
+
         //p2's turn
 
     //}
