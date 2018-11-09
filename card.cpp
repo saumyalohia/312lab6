@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include "card.h"
 #include <cstdio>
+#include <sstream>
 using namespace std;
 
 Card::Card() {
