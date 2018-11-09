@@ -7,8 +7,7 @@
 #include <string>
 #include <cstdlib>
 #include "card.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
 using namespace std;
 
 Card::Card() {
@@ -76,7 +75,7 @@ string Card::rankString(int r) const {
             rank = 'K';
             break;
         default:
-            rank = to_string(r);
+            rank = std::to_string(r);
     }
     return rank;
 }
