@@ -1,4 +1,4 @@
-// FILE: card_demo.cpp
+
 // This is a small demonstration program showing how the Card and Deck classes are used.
 #include <iostream>    // Provides cout and cin
 #include <cstdlib>     // Provides EXIT_SUCCESS
@@ -32,7 +32,17 @@ int main( )
     cout << p1.getName() <<" has : " << p1.showHand() << endl;
     cout << p2.getName() <<" has : " << p2.showHand() << endl;
 
-    p1.checkHandForPair()
+    Card c1 = Card();
+    Card c2 = Card();
+
+    while (p1.checkHandForPair(c1, c2)) {
+        p1.bookCards(c1, c2);
+        p1.removeCardFromHand(c1);
+        p1.removeCardFromHand(c2);
+    }
+
+    cout << p1.getName() <<" has : " << p1.showHand() << endl;
+    cout << p2.getName() <<" has : " << p2.showHand() << endl;
 
     return EXIT_SUCCESS;
 }

@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdlib>
 #include "card.h"
 #include "player.h"
 
@@ -156,7 +157,9 @@ bool Player::checkHandForPair(Card &c1, Card &c2)
     {
         for (int j = i+1; j < myHandSize; j++)
         {
-            if (myHand[i].getRank() == myHand[j].getRank())
+            c1 = myHand[i];
+            c2 = myHand[j];
+            if (c1.getRank() == c2.getRank())
             {
                 return true;
             }
