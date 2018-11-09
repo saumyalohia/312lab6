@@ -41,8 +41,38 @@ int main( )
         p1.removeCardFromHand(c2);
     }
 
+    while (p2.checkHandForPair(c1, c2)) {
+        p2.bookCards(c1, c2);
+        p2.removeCardFromHand(c1);
+        p2.removeCardFromHand(c2);
+    }
+
     cout << p1.getName() <<" has : " << p1.showHand() << endl;
     cout << p2.getName() <<" has : " << p2.showHand() << endl;
+
+    //while ((p1.getBookSize() < 14) || (p2.getBookSize() <14)) {
+        if (p1.getHandSize() > 0) {
+            cout << p1.getName() << "asks: Do you have a " << p1.chooseCardFromHand() << "?" << endl;
+
+        }
+        //check if p1 has cards in their hand
+            //skip directly to draw card if not
+        //p1 chooses a card from their hand
+        //p1 asks p2 if they have that card
+
+        //p2 checks their hand for that card
+        //if true, then remove card from p2's hand
+        //add to p1's hand
+        //check for books
+        //if false, print go fish
+            //check deck size
+            //p1 picks up a card from the deck
+            //check for books
+        //p2's turn
+
+    //}
+
+    //FOR DEBUGGING
 
     return EXIT_SUCCESS;
 }
