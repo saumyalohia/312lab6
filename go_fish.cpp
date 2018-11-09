@@ -1,6 +1,6 @@
 
 // This is a small demonstration program showing how the Card and Deck classes are used.
-#include <iostream>    // Provides cout and cin
+#include <iostream>    // Providesmyfile  and cin
 #include <cstdlib>     // Provides EXIT_SUCCESS
 #include <vector>
 #include "card.h"
@@ -32,8 +32,8 @@ int main( )
     dealHand(d, p1, numCards);
     dealHand(d, p2, numCards);
 
-    cout << p1.getName() <<" has : " << p1.showHand() << endl;
-    cout << p2.getName() <<" has : " << p2.showHand() << endl;
+    myfile << p1.getName() <<" has : " << p1.showHand() << endl;
+    myfile << p2.getName() <<" has : " << p2.showHand() << endl;
 
     Card c1 = Card();
     Card c2 = Card();
@@ -46,10 +46,10 @@ int main( )
         p2.bookCards(c1, c2);
     }
 
-    cout << p1.getName() <<" has : " << p1.showHand() << endl;
-    cout << p2.getName() <<" has : " << p2.showHand() << endl;
+    myfile << p1.getName() <<" has : " << p1.showHand() << endl;
+    myfile << p2.getName() <<" has : " << p2.showHand() << endl;
 
-    cout << "--------START GAME---------" << endl;
+    myfile << "--------START GAME---------" << endl;
 
     while (((p1.getBookSize() <= 13) && (p2.getBookSize() <= 13)) && !((p1.getBookSize()+p2.getBookSize()) == 26)) {
     //check if p1 has cards in their hand
@@ -61,7 +61,7 @@ int main( )
             card1 = p1.chooseCardFromHand();
             //p1 chooses a card from their hand
             //p1 asks p2 if they have that card
-            cout << p1.getName() << " asks: Do you have a " << card1.rankString(card1.getRank()) << "?" << endl;
+            myfile << p1.getName() << " asks: Do you have a " << card1.rankString(card1.getRank()) << "?" << endl;
         } else {
             if (d.size() > 0) {
                 p1.addCard(d.dealCard());
@@ -69,13 +69,13 @@ int main( )
                     p1.bookCards(c1, c2);
                 }
             }
-            cout << p1.getName() <<" has : " << p1.showHand() << endl;
-            cout << p1.getName() <<" has : " << p1.showHand() << endl;
+            myfile << p1.getName() <<" has : " << p1.showHand() << endl;
+            myfile << p1.getName() <<" has : " << p1.showHand() << endl;
         }
 
         //p2 checks their hand for that card
         if (p2.sameRankInHand(card1)) {
-            cout << p2.getName() << " has " << card1.rankString(card1.getRank()) << endl;
+            myfile << p2.getName() << " has " << card1.rankString(card1.getRank()) << endl;
             //if true, then remove card from p2's hand
             //p2.removeCardFromHand(card1);
             //add to p1's hand
@@ -87,30 +87,30 @@ int main( )
                     p1.bookCards(c1, c2);
                 }
             }
-            cout << p1.getName() <<" has : " << p1.showHand() << endl;
-            cout << p2.getName() <<" has : " << p2.showHand() << endl;
-            cout << p1.getName() <<" has books: " << p1.showBooks() << endl;
-            cout << p2.getName() <<" has books: " << p2.showBooks() << endl;
-            cout << p1.getName() <<"'s book size is: " << p1.getBookSize() << endl;
-            cout << p2.getName() <<"'s book size is: " << p2.getBookSize() << endl << endl;
+            myfile << p1.getName() <<" has : " << p1.showHand() << endl;
+            myfile << p2.getName() <<" has : " << p2.showHand() << endl;
+            myfile << p1.getName() <<" has books: " << p1.showBooks() << endl;
+            myfile << p2.getName() <<" has books: " << p2.showBooks() << endl;
+            myfile << p1.getName() <<"'s book size is: " << p1.getBookSize() << endl;
+            myfile << p2.getName() <<"'s book size is: " << p2.getBookSize() << endl << endl;
         } else {
             //if false, print go fish
-            cout << p2.getName() << " says: Go Fish" << endl;
+            myfile << p2.getName() << " says: Go Fish" << endl;
             if (d.size() > 0) {
                 Card picked;
                 picked = d.dealCard();
                 p1.addCard(picked);
-                cout << p1.getName() << " picked up " << picked.toString() << endl;
+                myfile << p1.getName() << " picked up " << picked.toString() << endl;
                 if (p1.checkHandForPair(c1, c2)) {
                     p1.bookCards(c1, c2);
                 }
             }
-            cout << p1.getName() <<" has : " << p1.showHand() << endl;
-            cout << p2.getName() <<" has : " << p2.showHand() << endl;
-            cout << p1.getName() <<" has books: " << p1.showBooks() << endl;
-            cout << p2.getName() <<" has books: " << p2.showBooks() << endl;
-            cout << p1.getName() <<"'s book size is: " << p1.getBookSize() << endl;
-            cout << p2.getName() <<"'s book size is: " << p2.getBookSize() << endl << endl;
+            myfile << p1.getName() <<" has : " << p1.showHand() << endl;
+            myfile << p2.getName() <<" has : " << p2.showHand() << endl;
+            myfile << p1.getName() <<" has books: " << p1.showBooks() << endl;
+            myfile << p2.getName() <<" has books: " << p2.showBooks() << endl;
+            myfile << p1.getName() <<"'s book size is: " << p1.getBookSize() << endl;
+            myfile << p2.getName() <<"'s book size is: " << p2.getBookSize() << endl << endl;
         }
 
         //**************JANE'S TURN
@@ -118,7 +118,7 @@ int main( )
         Card card2;
         if (p2.getHandSize() > 0) {
             card2 = p2.chooseCardFromHand();
-            cout << p2.getName() << " asks: Do you have a " << card2.rankString(card2.getRank()) << "?" << endl;
+            myfile << p2.getName() << " asks: Do you have a " << card2.rankString(card2.getRank()) << "?" << endl;
         } else {
             if (d.size() > 0) {
                 p2.addCard(d.dealCard());
@@ -126,12 +126,12 @@ int main( )
                     p2.bookCards(c1, c2);
                 }
             }
-            cout << p2.getName() <<" has : " << p2.showHand() << endl;
-            cout << p2.getName() <<" has : " << p2.showHand() << endl;
+            myfile << p2.getName() <<" has : " << p2.showHand() << endl;
+            myfile << p2.getName() <<" has : " << p2.showHand() << endl;
         }
 
         if (p1.sameRankInHand(card2)) {
-            cout << p1.getName() << " has " << card2.rankString(card2.getRank()) << endl;
+            myfile << p1.getName() << " has " << card2.rankString(card2.getRank()) << endl;
             p2.addCard(p1.removeCardFromHand(card2));
             //check for books
             if (p2.checkHandForPair(c1, c2)) {
@@ -140,44 +140,45 @@ int main( )
                     p2.bookCards(c1, c2);
                 }
             }
-            cout << p1.getName() <<" has : " << p1.showHand() << endl;
-            cout << p2.getName() <<" has : " << p2.showHand() << endl;
-            cout << p1.getName() <<" has books: " << p1.showBooks() << endl;
-            cout << p2.getName() <<" has books: " << p2.showBooks() << endl;
-            cout << p1.getName() <<"'s book size is: " << p1.getBookSize() << endl;
-            cout << p2.getName() <<"'s book size is: " << p2.getBookSize() << endl << endl;
+            myfile << p1.getName() <<" has : " << p1.showHand() << endl;
+            myfile << p2.getName() <<" has : " << p2.showHand() << endl;
+            myfile << p1.getName() <<" has books: " << p1.showBooks() << endl;
+            myfile << p2.getName() <<" has books: " << p2.showBooks() << endl;
+            myfile << p1.getName() <<"'s book size is: " << p1.getBookSize() << endl;
+            myfile << p2.getName() <<"'s book size is: " << p2.getBookSize() << endl << endl;
         } else {
             //if false, print go fish
-            cout << p1.getName() << " says: Go Fish" << endl;
+            myfile << p1.getName() << " says: Go Fish" << endl;
             if (d.size() > 0) {
                 Card picked;
                 picked = d.dealCard();
                 p2.addCard(picked);
-                cout << p2.getName() << " picked up " << picked.toString() << endl;
+                myfile << p2.getName() << " picked up " << picked.toString() << endl;
                 if (p2.checkHandForPair(c1, c2)) {
                     p2.bookCards(c1, c2);
                 }
             }
-            cout << p1.getName() <<" has : " << p1.showHand() << endl;
-            cout << p2.getName() <<" has : " << p2.showHand() << endl;
-            cout << p1.getName() <<" has books: " << p1.showBooks() << endl;
-            cout << p2.getName() <<" has books: " << p2.showBooks() << endl;
-            cout << p1.getName() <<"'s book size is: " << p1.getBookSize() << endl;
-            cout << p2.getName() <<"'s book size is: " << p2.getBookSize() << endl << endl;
+            myfile << p1.getName() <<" has : " << p1.showHand() << endl;
+            myfile << p2.getName() <<" has : " << p2.showHand() << endl;
+            myfile << p1.getName() <<" has books: " << p1.showBooks() << endl;
+            myfile << p2.getName() <<" has books: " << p2.showBooks() << endl;
+            myfile << p1.getName() <<"'s book size is: " << p1.getBookSize() << endl;
+            myfile << p2.getName() <<"'s book size is: " << p2.getBookSize() << endl << endl;
         }
     }
 
 
     if(p1.getBookSize() == p2.getBookSize()) {
-        cout << p1.getName() << " and " << p2.getName() << " are tied!" << endl;
+        myfile << p1.getName() << " and " << p2.getName() << " are tied!" << endl;
     } else if (p1.getBookSize() > p2.getBookSize()) {
-        cout << p1.getName() << " CRUSHED " << p2.getName() << "!" << endl;
+        myfile << p1.getName() << " CRUSHED " << p2.getName() << "!" << endl;
     } else {
-        cout << p2.getName() << " CRUSHED " << p1.getName() << "!" << endl;
+        myfile << p2.getName() << " CRUSHED " << p1.getName() << "!" << endl;
     }
 
 
-    cout << "GAME OVER." << endl;
+    myfile << "GAME OVER." << endl;
+    myfile.close();
     return EXIT_SUCCESS;
 }
 
